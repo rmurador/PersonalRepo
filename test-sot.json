@@ -1,0 +1,58 @@
+{
+  "properties": [
+    {
+      "name": "CONSUL_ENV",
+      "value": "stage"
+    },
+    {
+      "name": "domain",
+      "value": "stg"
+    },
+    {
+      "name": "role",
+      "value": "wfe"
+    }
+  ],
+  "pools": [
+    {
+      "poolName": "Pool.STG-PMWFE-100",
+      "nodeListA": [
+        "EFScriptTestMachine1"
+      ],
+      "nodeListB": [
+        "EFScriptTestMachine2"
+      ],
+      "lbType": "alb",
+      "properties": [
+        {
+            "name": "tgArn",
+            "value": "arn:aws:elasticloadbalancing:us-west-2:405682502666:targetgroup/EFScriptsTargetGroupTop/f7cc6597b6a0ac20"
+          },
+          {
+            "name": "role",
+            "value": "api"
+          }
+      ]
+    },
+    {
+      "poolName": "EFScriptTestMachine3",
+      "nodeListA": [
+        "EFScriptTestMachine3"
+      ],
+      "nodeListB": [
+        "EFScriptTestMachine4"
+      ],
+      "lbType": "alb",
+      "properties": [
+        {
+            "name": "tgArn",
+            "value": "arn:aws:elasticloadbalancing:us-west-2:405682502666:targetgroup/EFScriptsTargetGroupBottom/2024afcea1b6332e"
+          },
+          {
+            "name": "role",
+            "value": "api"
+          }
+      ]
+    }
+  ]
+}
